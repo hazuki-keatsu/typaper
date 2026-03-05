@@ -1,7 +1,7 @@
 ---
 title: Coq/Rocq Introduction - 1 - Installing
 author: Hazuki Keatsu
-pubDatetime: 2026-03-05T17:34:31Z
+pubDatetime: 2026-03-04T17:34:31Z
 featured: true
 draft: false
 tags:
