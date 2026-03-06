@@ -2,7 +2,7 @@
 title: Coq/Rocq Introduction - 2 - Prerequisite knowledge
 author: Hazuki Keatsu
 pubDatetime: 2026-03-05T17:34:31Z
-featured: true
+featured: false
 draft: false
 protocol: CC BY
 tags:

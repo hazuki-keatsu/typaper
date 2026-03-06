@@ -1,0 +1,33 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { DAILY_PATH } from "@/content.config";
+import DailyDetails from "@/layouts/DailyDetails.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { getPath } from "@/utils/getPath";
+
+type Props = {
+  entry: CollectionEntry<"daily">;
+};
+
+export async function getStaticPaths() {
+  const entries = await getCollection("daily", ({ data }) => !data.draft);
+  return entries.map(entry => ({
+    params: {
+      slug: getPath(entry.id, entry.filePath, {
+        basePath: "/daily",
+        contentPath: DAILY_PATH,
+        includeBase: false,
+        slug: entry.data.slug,
+      }),
+    },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+
+const entries = await getCollection("daily");
+const sortedEntries = getSortedPosts(entries);
+---
+
+<DailyDetails entry={entry} entries={sortedEntries} />

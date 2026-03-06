@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { SITE } from "@/config";
+
+const entries = await getCollection("daily");
+const sortedEntries = getSortedPosts(entries);
+---
+
+<Layout title={`Daily | ${SITE.title}`}>
+  <Header />
+  <Main
+    pageTitle="Daily"
+    pageDesc="Quickly record inspirations and ideas."
+  >
+    {
+      sortedEntries.length > 0 ? (
+        <ul>
+          {sortedEntries.map(entry => <Card variant="h3" {...entry} />)}
+        </ul>
+      ) : (
+        <section class="border border-dashed border-border px-5 py-10 text-center">
+          <p class="text-lg">There is no Daily entry.</p>
+        </section>
+      )
+    }
+  </Main>
+  <Footer />
+</Layout>

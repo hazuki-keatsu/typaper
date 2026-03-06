@@ -13,10 +13,13 @@ import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
 
 const posts = await getCollection("blog");
+const dailyEntries = await getCollection("daily");
 
 const sortedPosts = getSortedPosts(posts);
+const sortedDailyEntries = getSortedPosts(dailyEntries);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const recentDailyEntries = sortedDailyEntries.slice(0, 4);
 ---
 
 <Layout>
@@ -76,7 +79,13 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+          <div class="mb-6 flex items-end justify-between gap-4 max-sm:flex-col max-sm:items-start">
+            <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+            <LinkButton href="/posts/">
+              All Posts
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
           <ul>
             {recentPosts.map(
               (data, index) =>
@@ -87,12 +96,25 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       )
     }
 
-    <div class="my-8 text-center">
-      <LinkButton href="/posts/">
-        All Posts
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
+    {
+      recentDailyEntries.length > 0 && (
+        <section
+          id="recent-daily"
+          class="border-t border-dashed border-border pt-12 pb-6"
+        >
+          <div class="mb-6 flex items-end justify-between gap-4 max-sm:flex-col max-sm:items-start">
+            <h2 class="text-2xl font-semibold tracking-wide">Daily Sparks</h2>
+            <LinkButton href="/daily/">
+              Visit Daily
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
+          <ul>
+            {recentDailyEntries.map(entry => <Card variant="h3" {...entry} />)}
+          </ul>
+        </section>
+      )
+    }
   </main>
   <Footer />
 </Layout>

@@ -10,7 +10,9 @@
     "astro": "astro",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "new:daily": "node scripts/create-daily.ts new-daily",
+    "new:blog": "node scripts/create-blog.ts new-post"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.14",

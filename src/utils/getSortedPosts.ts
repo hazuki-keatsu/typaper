@@ -1,7 +1,14 @@
-import type { CollectionEntry } from "astro:content";
 import postFilter from "./postFilter";
 
-const getSortedPosts = (posts: CollectionEntry<"blog">[]) => {
+type SortableEntry = {
+  data: {
+    draft?: boolean;
+    pubDatetime: string | Date;
+    modDatetime?: string | Date | null;
+  };
+};
+
+const getSortedPosts = <T extends SortableEntry>(posts: T[]) => {
   return posts
     .filter(postFilter)
     .sort(
