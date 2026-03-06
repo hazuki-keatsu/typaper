@@ -1,0 +1,28 @@
+---
+import IconUser from "@/assets/icons/IconUser.svg";
+
+type Props = {
+  class?: string;
+  size?: "sm" | "lg";
+  userName: string;
+};
+
+const {
+  size = "sm",
+  class: className = "",
+  userName
+} = Astro.props;
+---
+
+<div class:list={["flex items-center gap-x-2 opacity-80", className]}>
+  <IconUser
+    class:list={[
+      "inline-block size-6 min-w-5.5",
+      { "scale-90": size === "sm" },
+    ]}
+  />
+  <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+    {userName}
+  </span>
+
+</div>

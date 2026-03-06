@@ -31,6 +31,39 @@ export const SOCIALS: Social[] = [
   },
 ] as const;
 
+export const PROTOCOL_LINKS = {
+  "CC BY": {
+    label: "CC BY",
+    href: "https://creativecommons.org/licenses/by/4.0/",
+  },
+  "CC BY-SA": {
+    label: "CC BY-SA",
+    href: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  "CC BY-NC": {
+    label: "CC BY-NC",
+    href: "https://creativecommons.org/licenses/by-nc/4.0/",
+  },
+  "CC BY-NC-SA": {
+    label: "CC BY-NC-SA",
+    href: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  },
+  "CC BY-ND": {
+    label: "CC BY-ND",
+    href: "https://creativecommons.org/licenses/by-nd/4.0/",
+  },
+  "CC BY-NC-ND": {
+    label: "CC BY-NC-ND",
+    href: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  },
+  "CC0": {
+    label: "CC0",
+    href: "https://creativecommons.org/publicdomain/zero/1.0/",
+  },
+} as const;
+
+export type ProtocolLinkKey = keyof typeof PROTOCOL_LINKS;
+
 export const SHARE_LINKS: Social[] = [
   {
     name: "WhatsApp",

@@ -4,10 +4,11 @@ author: Hazuki Keatsu
 pubDatetime: 2026-03-05T17:34:31Z
 featured: true
 draft: false
+protocol: CC BY
 tags:
   - Coq/Rocq
 description:
-  学习使用 Coq/Rocq 证明的前置知识。
+  The prerequisite knowledge before learning Coq/Rocq.
 ---
 
 ## 函数式编程

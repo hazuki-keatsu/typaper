@@ -1,0 +1,35 @@
+---
+import IconLicense from "@/assets/icons/IconLicense.svg";
+import { PROTOCOL_LINKS } from "@/constants";
+import LinkButton from "./LinkButton.astro";
+
+type Props = {
+  class?: string;
+  size?: "sm" | "lg";
+  protocol?: string;
+};
+
+const {
+  size = "sm",
+  class: className = "",
+  protocol,
+} = Astro.props;
+
+if (!protocol) {
+  return null;
+}
+
+const normalizedProtocol = protocol.trim();
+const protocolLink =
+  PROTOCOL_LINKS[normalizedProtocol as keyof typeof PROTOCOL_LINKS];
+---
+
+<div class:list={["flex items-center gap-x-2 opacity-80", className]}>
+  <IconLicense
+    class:list={[
+      "inline-block size-6 min-w-5.5",
+      { "scale-90": size === "sm" },
+    ]}
+  />
+  <LinkButton class:list={"border-b-2 border-dashed border-foreground"} aria-disabled={!protocolLink} href={protocolLink.href}>{protocolLink.label}</LinkButton>
+</div>

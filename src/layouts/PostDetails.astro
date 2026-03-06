@@ -14,6 +14,8 @@ import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
+import Author from "@/components/Author.astro";
+import Protocol from "@/components/Protocol.astro";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -25,6 +27,7 @@ const { post, posts } = Astro.props;
 const {
   title,
   author,
+  protocol,
   description,
   ogImage: initOgImage,
   canonicalURL,
@@ -96,8 +99,10 @@ const nextPost =
     >
       {title}
     </h1>
-    <div class="my-2 flex items-center gap-2">
+    <div class="my-2 flex flex-wrap items-center gap-2">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+      <Author size="lg" userName={author} />
+      <Protocol size="lg" {protocol} />
       <span
         aria-hidden="true"
         class:list={[
@@ -118,7 +123,7 @@ const nextPost =
 
     <EditPost class="sm:hidden" {hideEditPost} {post} />
 
-    <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8 min-h-[3rem]">
+    <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8 min-h-12">
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
     </ul>
 

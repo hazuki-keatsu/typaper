@@ -1,8 +1,9 @@
 ---
-title: Example Draft Post
-author: Sat Naing
-pubDatetime: 2022-06-06T04:06:31Z
+title: Post Title
+author: Hazuki Keatsu
+pubDatetime: 2026-03-07T04:06:31Z
 slug: example-draft-post
+protocol: CC BY
 featured: false
 draft: true
 tags:

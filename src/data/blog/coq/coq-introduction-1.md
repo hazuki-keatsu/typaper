@@ -4,10 +4,11 @@ author: Hazuki Keatsu
 pubDatetime: 2026-03-04T17:34:31Z
 featured: true
 draft: false
+protocol: CC BY
 tags:
   - Coq/Rocq
 description:
-  Brief introduction to the world of Coq/Rocq Prover. Coq/Rocq 证明器的安装。
+  Brief introduction to the world of Coq/Rocq Prover.
 ---
 
 > 本来想着，要不要这篇文章使用英文来书写，但是考虑到中文互联网上的关于 Coq 的资料实在是太少了，所以还是用中文写吧。
