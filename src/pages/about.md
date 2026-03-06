@@ -3,7 +3,7 @@ layout: ../layouts/AboutLayout.astro
 title: "About ME"
 ---
 
-👋Hello! 
+## 👋Hello! 
 
 My name is **Hazuki Keatsu** or the real name, Boming Zhang.
 
