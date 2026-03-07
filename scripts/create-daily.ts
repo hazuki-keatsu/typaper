@@ -6,8 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const TEMPLATE_PATH = path.resolve(__dirname, "../src/data/templates/daily.md");
-const OUTPUT_PATH = path.resolve(__dirname, "../src/data/daily/new-daily.md");
-const OUTPUT_SLUG = "new-daily";
+const OUTPUT_SLUG = new Date().toISOString().substring(0, 10);
+const OUTPUT_PATH = path.resolve(__dirname, `../src/data/daily/${OUTPUT_SLUG}.md`);
 
 function getTitle(args: string[]) {
 	const titleFlagIndex = args.findIndex(arg => arg === "--title" || arg === "-t");

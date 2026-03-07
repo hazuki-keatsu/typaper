@@ -1,7 +1,7 @@
 ---
 title: Lean 4 Introduction-1
 author: Hazuki Keatsu
-pubDatetime: 2026-03-06T23:56:31Z
+pubDatetime: 2026-03-06T23:56:31+08:00
 featured: false
 draft: true
 tags:

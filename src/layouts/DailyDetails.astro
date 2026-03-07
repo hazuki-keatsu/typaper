@@ -56,9 +56,26 @@ const nextEntry =
 <Layout {...layoutProps}>
   <Header />
   <BackButton />
+  <div
+    aria-hidden="true"
+    data-pagefind-ignore
+    class="pointer-events-none fixed inset-0 z-0 flex flex-col items-center justify-center select-none"
+  >
+    <div class="-rotate-12 p-4 border-4 border-accent/10 rounded-2xl">
+      <span
+        class="text-5xl font-black tracking-[0.35em] text-accent/10 sm:text-7xl"
+      >
+        DAILY
+      </span>
+    </div>
+    <span class="translate-x-20 sm:translate-x-40 text-md sm:text-xl text-accent/20 italic">By Hazuki Keatsu</span>
+  </div>
   <main
     id="main-content"
-    class:list={["app-layout pb-12", { "mt-8": !SITE.showBackButton }]}
+    class:list={[
+      "relative z-10 app-layout pb-12",
+      { "mt-8": !SITE.showBackButton },
+    ]}
     data-pagefind-body
   >
     <h1
