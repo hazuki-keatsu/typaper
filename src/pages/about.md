@@ -3,7 +3,7 @@ layout: ../layouts/AboutLayout.astro
 title: "About ME"
 ---
 
-## 👋Hello! 
+## 👋Hello!
 
 My name is **Hazuki Keatsu** or the real name, Boming Zhang.
 
@@ -25,5 +25,3 @@ Outside of work, I enjoy playing **electronic guitar**, **galgame**, and eating.
 I am always open to connecting with people who share similar interests.
 
 Feel free to reach out to me.
-
-

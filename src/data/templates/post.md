@@ -7,8 +7,7 @@ featured: false
 draft: true
 tags:
   - tag
-description:
-  description
+description: description
 ---
 
 Content

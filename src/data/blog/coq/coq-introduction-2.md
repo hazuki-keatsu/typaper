@@ -7,8 +7,7 @@ draft: false
 protocol: CC BY
 tags:
   - Coq/Rocq
-description:
-  The prerequisite knowledge before learning Coq/Rocq.
+description: The prerequisite knowledge before learning Coq/Rocq.
 ---
 
 ## 函数式编程

@@ -22,9 +22,12 @@ export function getPath(
 ) {
   const includeBase =
     typeof options === "boolean" ? options : (options.includeBase ?? true);
-  const basePath = typeof options === "boolean" ? "/posts" : (options.basePath ?? "/posts");
+  const basePath =
+    typeof options === "boolean" ? "/posts" : (options.basePath ?? "/posts");
   const contentPath =
-    typeof options === "boolean" ? BLOG_PATH : (options.contentPath ?? BLOG_PATH);
+    typeof options === "boolean"
+      ? BLOG_PATH
+      : (options.contentPath ?? BLOG_PATH);
   const pathSegments = filePath
     ?.replace(contentPath, "")
     .split("/")

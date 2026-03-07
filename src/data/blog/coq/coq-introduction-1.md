@@ -7,8 +7,7 @@ draft: false
 protocol: CC BY
 tags:
   - Coq/Rocq
-description:
-  Brief introduction to the world of Coq/Rocq Prover.
+description: Brief introduction to the world of Coq/Rocq Prover.
 ---
 
 > 本来想着，要不要这篇文章使用英文来书写，但是考虑到中文互联网上的关于 Coq 的资料实在是太少了，所以还是用中文写吧。
@@ -53,17 +52,20 @@ description:
 推荐使用 Opam 这个包管理器来安装 Coq，这个包管理器是 OCaml 语言的包管理，而且与系统隔离，所以十分推荐使用。
 
 1. 安装 `opam`：
+
    ```bash
    sudo apt install opam
    ```
 
 2. 初始化 `opam` 环境：
+
    ```bash
    opam init
    eval $(opam env)
    ```
 
 3. 安装 Coq 并固定版本，以免误更新：
+
    ```bash
    opam pin add rocq-prover $VERSION
    ```
@@ -75,6 +77,7 @@ description:
    如果输出了 Coq 的版本号，则说明安装成功。
 
 通过 `opam`，你还可以轻松安装 Coq 的其他插件或特定版本。例如：
+
 ```bash
 opam install coqide  # 安装 Coq 的图形界面
 opam install coq-mathcomp-algebra  # 安装数学组件库
@@ -87,9 +90,9 @@ opam install coq-mathcomp-algebra  # 安装数学组件库
 1. 安装 `VsRocq` 插件和 Coq 语法服务器：
    - 打开 VS Code，进入扩展市场，搜索并安装 **VsRocq** 插件。
    - 在终端中输入以下命令安装语法服务器。
-      ```bash
-      opam install vsrocq-language-server
-      ```
+     ```bash
+     opam install vsrocq-language-server
+     ```
    - 通过命令 `which vsrocqtop` 得到语法服务器的命令路径，然后复制这个路径填入 `VsRocq` 插件中的 `vsrocq.path` 配置项.
 
 2. 使用 `VsRocq` 的功能：
@@ -112,6 +115,7 @@ opam install coq-mathcomp-algebra  # 安装数学组件库
 ---
 
 > 参考文档：
+>
 > 1. [Software Foundations](https://softwarefoundations.cis.upenn.edu/)
 > 2. [Installing the Rocq Prover and its packages](https://rocq-prover.org/docs/using-opam)
 > 3. [VsRocq Vscode Extension Market](https://marketplace.visualstudio.com/items?itemName=rocq-prover.vsrocq)

@@ -7,11 +7,7 @@ type Props = {
   userName: string;
 };
 
-const {
-  size = "sm",
-  class: className = "",
-  userName
-} = Astro.props;
+const { size = "sm", class: className = "", userName } = Astro.props;
 ---
 
 <div class:list={["flex items-center gap-x-2 opacity-80", className]}>
@@ -24,5 +20,4 @@ const {
   <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
     {userName}
   </span>
-
 </div>

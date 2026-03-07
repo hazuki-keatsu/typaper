@@ -6,8 +6,7 @@ featured: true
 draft: false
 tags:
   - Lean 4
-description:
-  简要介绍一下 Lean 4。
+description: 简要介绍一下 Lean 4。
 ---
 
 ## 初识Lean 4：不止是编程语言，更是全新一代的数学证明的工具

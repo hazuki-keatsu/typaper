@@ -56,7 +56,7 @@ export const PROTOCOL_LINKS = {
     label: "CC BY-NC-ND",
     href: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   },
-  "CC0": {
+  CC0: {
     label: "CC0",
     href: "https://creativecommons.org/publicdomain/zero/1.0/",
   },

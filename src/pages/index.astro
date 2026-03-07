@@ -29,20 +29,6 @@ const recentDailyEntries = sortedDailyEntries.slice(0, 4);
       <h1 class="my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl">
         一緒にネコになろや。
       </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
 
       <p>のんびり歩いたり、立ち止まったり。</p>
 
@@ -110,7 +96,9 @@ const recentDailyEntries = sortedDailyEntries.slice(0, 4);
             </LinkButton>
           </div>
           <ul>
-            {recentDailyEntries.map(entry => <Card variant="h3" {...entry} />)}
+            {recentDailyEntries.map(entry => (
+              <Card variant="h3" {...entry} />
+            ))}
           </ul>
         </section>
       )

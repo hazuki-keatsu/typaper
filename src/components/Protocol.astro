@@ -9,11 +9,7 @@ type Props = {
   protocol?: string;
 };
 
-const {
-  size = "sm",
-  class: className = "",
-  protocol,
-} = Astro.props;
+const { size = "sm", class: className = "", protocol } = Astro.props;
 
 if (!protocol) {
   return null;
@@ -31,5 +27,9 @@ const protocolLink =
       { "scale-90": size === "sm" },
     ]}
   />
-  <LinkButton class:list={"border-b-2 border-dashed border-foreground"} aria-disabled={!protocolLink} href={protocolLink.href}>{protocolLink.label}</LinkButton>
+  <LinkButton
+    class:list={"border-b-2 border-dashed border-foreground"}
+    aria-disabled={!protocolLink}
+    href={protocolLink.href}>{protocolLink.label}</LinkButton
+  >
 </div>

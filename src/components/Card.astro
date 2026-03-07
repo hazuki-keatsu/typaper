@@ -9,8 +9,14 @@ type Props = {
   variant?: "h2" | "h3";
 } & (CollectionEntry<"blog"> | CollectionEntry<"daily">);
 
-const { variant: Heading = "h2", id, data, filePath, body, collection } =
-  Astro.props;
+const {
+  variant: Heading = "h2",
+  id,
+  data,
+  filePath,
+  body,
+  collection,
+} = Astro.props;
 
 const title = data.title;
 const datetimeProps = {

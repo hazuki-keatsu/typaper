@@ -14,14 +14,13 @@ const sortedEntries = getSortedPosts(entries);
 
 <Layout title={`Daily | ${SITE.title}`}>
   <Header />
-  <Main
-    pageTitle="Daily"
-    pageDesc="Quickly record inspirations and ideas."
-  >
+  <Main pageTitle="Daily" pageDesc="Quickly record inspirations and ideas.">
     {
       sortedEntries.length > 0 ? (
         <ul>
-          {sortedEntries.map(entry => <Card variant="h3" {...entry} />)}
+          {sortedEntries.map(entry => (
+            <Card variant="h3" {...entry} />
+          ))}
         </ul>
       ) : (
         <section class="border border-dashed border-border px-5 py-10 text-center">
