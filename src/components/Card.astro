@@ -39,8 +39,8 @@ const preview = (body ?? "")
 const description =
   "description" in data
     ? data.description
-    : preview.length > 80
-      ? `${preview.slice(0, 80).trimEnd()}...`
+    : preview.length > 120
+      ? `${preview.slice(0, 120).trimEnd()}...`
       : preview || "An inspire without more description.";
 ---
 
