@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://keatsu.top/", // replace this with your deployed domain
+  website: "https://blog.keatsu.top/", // replace this with your deployed domain
   author: "Hazuki Keatsu",
   profile: "https://keatsu.top/",
   desc: "にゃーん。",

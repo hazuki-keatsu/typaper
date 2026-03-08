@@ -34,9 +34,7 @@ html[data-theme="dark"] {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease;
+    transition: background-color 0.15s ease;
   }
   html {
     @apply overflow-y-scroll scroll-smooth;
