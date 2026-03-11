@@ -13,6 +13,7 @@ import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
+import ShareLinks from "@/components/ShareLinks.astro";
 
 type Props = {
   entry: CollectionEntry<"daily">;
@@ -105,6 +106,8 @@ const nextEntry =
     </article>
 
     <BackToTopButton />
+
+    <ShareLinks />
 
     <hr class="my-6 border-dashed" />
 
