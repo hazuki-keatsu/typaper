@@ -6,8 +6,8 @@ protocol: CC BY
 featured: true
 draft: false
 tags:
-  - cassowary
-  - note
+  - Cassowary
+  - Note
 description: 简要介绍了 Cassowary 算法的重要概念。
 ---
 
