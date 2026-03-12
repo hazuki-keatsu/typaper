@@ -2,11 +2,9 @@ import type { Props } from "astro";
 import IconMail from "@/assets/icons/IconMail.svg";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
 import IconBrandX from "@/assets/icons/IconBrandX.svg";
-import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
 import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
-import IconPinterest from "@/assets/icons/IconPinterest.svg";
 import { SITE } from "@/config";
 
 interface Social {
@@ -90,15 +88,59 @@ export const SHARE_LINKS: Social[] = [
     icon: IconTelegram,
   },
   {
-    name: "Pinterest",
-    href: "https://pinterest.com/pin/create/button/?url=",
-    linkTitle: `Share this post on Pinterest`,
-    icon: IconPinterest,
-  },
-  {
     name: "Mail",
     href: "mailto:?subject=See%20this%20post&body=",
     linkTitle: `Share this post via email`,
     icon: IconMail,
   },
 ] as const;
+
+// music.163.com/outchain/player?type=2&id=1862846858&auto=0&height=66
+
+export const MUSIC_LIKE = [
+  {
+    name: "丸の内サディスティック",
+    author: "椎名林檎",
+    id: "28718934",
+  },
+  {
+    name: "我甘党",
+    author: "花冷え。",
+    id: "1862846858",
+  },
+  {
+    name: "Alethea",
+    author: "「Story of Hope」",
+    id: "407000481",
+  },
+  {
+    name: "Scars",
+    author: "Landmvrks",
+    id: "548306441",
+  },
+  {
+    name: "Sunset Kiss",
+    author: "BABYMETAL/Polyphia",
+    id: "2734256280",
+  },
+  {
+    name: "vermelho do sol",
+    author: "toconoma",
+    id: "511975192",
+  },
+  {
+    name: "Stella Maris",
+    author: "Hizaki",
+    id: "2663700844",
+  },
+  {
+    name: "Aftermath",
+    author: "Crown the empire",
+    id: "422132175"
+  },
+  {
+    name: "Gratitude",
+    author: "a2c",
+    id: "737526"
+  },
+]

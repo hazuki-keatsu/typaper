@@ -1,0 +1,61 @@
+---
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+import { MUSIC_LIKE } from "@/constants";
+---
+
+<Layout title={`Music Gallery | ${SITE.title}`}>
+  <Header />
+  <Main
+    pageTitle="Music Gallery"
+    pageDesc="Some music I wanna recommend for you. (Resource from Netease Cloud Music)"
+  >
+    <section>
+      {
+        MUSIC_LIKE.length > 0 ? (
+          <ul class="m-0 grid list-none gap-5 p-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {MUSIC_LIKE.map(entry => (
+              <li
+                class:list={[
+                  "relative flex items-end justify-center overflow-hidden rounded-xl border border-border",
+                  "bg-muted/45 p-3 pt-8 transition-all duration-300",
+                  "hover:-translate-y-0.75 hover:border-accent/45",
+                ]}
+              >
+                <h2 class="translate-x-2 absolute top-2 left-3 z-0 max-w-[88%] leading-none font-black tracking-tight text-foreground/30 text-5xl whitespace-nowrap">
+                  {entry.name}
+                </h2>
+                <p class="absolute right-3 bottom-2 z-20 rounded px-2 py-0.5 text-xs font-semibold tracking-[0.14em] text-accent/85 uppercase">
+                  {entry.author}
+                </p>
+                <iframe
+                  class="netease-iframe relative z-10 mt-6 block h-21.5 w-full border-0"
+                  title={`music-${entry.id}`}
+                  loading="lazy"
+                  src={`//music.163.com/outchain/player?type=2&id=${entry.id}&auto=0&height=66`}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <section class="border border-dashed border-border px-5 py-10 text-center">
+            <p class="text-lg">There is no music.</p>
+          </section>
+        )
+      }
+    </section>
+  </Main>
+  <Footer />
+  <style>
+    :global(html[data-theme="dark"]) .netease-iframe {
+      filter: brightness(75%) contrast(105%) grayscale(75%);
+    }
+
+    :global(html[data-theme="light"]) .netease-iframe {
+      filter: grayscale(75%);
+    }
+  </style>
+</Layout>
