@@ -7,6 +7,7 @@ featured: true
 draft: false
 tags:
   - Cassowary
+  - Linear/Hign-dimensional Solve
   - Note
 description: 简要介绍了 Cassowary 算法的重要概念。
 ---

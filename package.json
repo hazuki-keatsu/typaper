@@ -19,6 +19,7 @@
     "@astrojs/sitemap": "^3.6.0",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.18",
+    "aplayer": "^1.10.1",
     "astro": "^5.16.6",
     "dayjs": "^1.11.19",
     "katex": "^0.16.35",

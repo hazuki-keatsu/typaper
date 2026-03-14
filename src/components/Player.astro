@@ -1,0 +1,48 @@
+---
+import "aplayer/dist/APlayer.min.css";
+import "@/styles/aplayer.css";
+---
+
+<div id="aplayer-container" transition:persist="aplayer"></div>
+
+<script>
+  // @ts-ignore
+  import APlayer from "aplayer";
+  import { SITE } from "src/config";
+
+  // 手动利用 Meting API 获取歌单数据，并手动初始化 APlayer。
+  // 这样做可以绕过 <meting-js> 自定义标签在 Astro 页面切换（DOM重排）时会反复触发重新挂载的问题，从而保证音乐真正无缝播放！
+  document.addEventListener("astro:page-load", async () => {
+    const container = document.getElementById("aplayer-container");
+    if (!container || container.hasAttribute("data-aplayer-initialized")) return;
+
+    container.setAttribute("data-aplayer-initialized", "true");
+
+    try {
+      // 根据你的网易云歌单 ID 获取数据
+      const res = await fetch(`https://api.i-meto.com/meting/api?server=netease&type=playlist&id=${SITE.songListId}`);
+      const data = await res.json();
+
+      const audio = data.map((song: any) => ({
+        name: song.title,
+        artist: song.author,
+        url: song.url,
+        cover: song.pic,
+        lrc: song.lrc,
+      }));
+
+      const ap = new APlayer({
+        container: container,
+        fixed: true,
+        lrcType: 3, // 开启歌词支持
+        theme: "var(--accent)",
+        audio: audio,
+      });
+
+      // 默认隐藏悬浮歌词，用户可点击播放器歌词按钮手动显示
+      ap.lrc.hide();
+    } catch (e) {
+      console.error("APlayer 初始化失败", e);
+    }
+  });
+</script>
