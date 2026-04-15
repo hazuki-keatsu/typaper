@@ -160,6 +160,12 @@ source ~/.bashrc
 > 输入 `sudo ostree admin status` 来确认，有返回就说明系统为不可变系统。
 > ![OSTree](/images/openkylin-vmware/ostree.png)
 
+---
+
+完成之后的效果：
+
+![效果](/images/openkylin-vmware/finish.png)
+
 ## 尾声
 
 写到这里，相信你已经对如何在 VMware 中安装和使用 openKylin 有了一个基本的了解。
