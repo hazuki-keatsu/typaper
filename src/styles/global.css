@@ -21,7 +21,7 @@ html[data-theme="dark"] {
 }
 
 @theme inline {
-  --font-app: Georgia, "Times New Roman", Times, serif;
+  --font-app: Georgia, "Times New Roman", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", "STSong", serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);

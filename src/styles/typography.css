@@ -36,7 +36,7 @@
     }
 
     hr {
-      @apply border-border;
+      @apply my-4 border-border;
     }
 
     img {
