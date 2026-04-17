@@ -37,7 +37,8 @@ export const GET: APIRoute = async () => {
               url = urlObj.url;
               break;
             }
-          } catch {
+          } catch(e) {
+            console.error("Fail to get song: id [" + song.url_id || song.id + "], e [" + e + "]")
             // Continue trying lower bitrate fallback
           }
         }
