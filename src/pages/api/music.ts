@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import Meting from "@meting/core";
 import { SITE } from "src/config";
 
+export const prerender = false;
+
 interface APlayerAudio {
   name: string;
   artist: string;
@@ -9,6 +11,8 @@ interface APlayerAudio {
   cover: string;
   lrc: string;
 }
+
+const AUDIO_QUALITIES = [320, 192, 128] as const;
 
 export const GET: APIRoute = async () => {
   try {
@@ -25,12 +29,17 @@ export const GET: APIRoute = async () => {
       songs.map(async (song: any) => {
         // 获取歌曲 URL
         let url = "";
-        try {
-          const urlData = await meting.url(song.url_id || song.id, 320);
-          const urlObj = JSON.parse(urlData);
-          url = urlObj.url || "";
-        } catch {
-          url = "";
+        for (const quality of AUDIO_QUALITIES) {
+          try {
+            const urlData = await meting.url(song.url_id || song.id, quality);
+            const urlObj = JSON.parse(urlData);
+            if (urlObj.url) {
+              url = urlObj.url;
+              break;
+            }
+          } catch {
+            // Continue trying lower bitrate fallback
+          }
         }
 
         // 获取歌词

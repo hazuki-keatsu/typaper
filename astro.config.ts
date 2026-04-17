@@ -1,6 +1,7 @@
 import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import {
@@ -17,6 +18,7 @@ import rehypeKatex from "rehype-katex";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  adapter: vercel(),
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
