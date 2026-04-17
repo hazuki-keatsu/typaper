@@ -14,7 +14,11 @@ interface APlayerAudio {
 
 const AUDIO_QUALITIES = [320, 192, 128] as const;
 
-export const GET: APIRoute = async () => {
+function getNeteaseOuterUrl(songId: string | number) {
+  return `https://music.163.com/song/media/outer/url?id=${songId}.mp3`;
+}
+
+export const GET: APIRoute = async ({ url: requestUrl }) => {
   try {
     // 初始化 Meting，使用网易云音乐
     const meting = new Meting("netease");
@@ -23,19 +27,31 @@ export const GET: APIRoute = async () => {
     // 获取歌单数据
     const playlistData = await meting.playlist(SITE.songListId);
     const songs = JSON.parse(playlistData);
+    const debug = requestUrl.searchParams.get("debug") === "1";
+    const qualityHits: Record<string, number> = {
+      "320": 0,
+      "192": 0,
+      "128": 0,
+      outer: 0,
+      none: 0,
+    };
+    const songDiagnostics: Array<{ id: string | number; source: string; hasUrl: boolean }> = [];
 
     // 转换为 APlayer 格式
     const audio: APlayerAudio[] = await Promise.all(
       songs.map(async (song: any) => {
         // 获取歌曲 URL
         let url = "";
-        let songId = song.url_id || song.id;
+        const songId = song.url_id || song.id;
+        let source = "none";
         for (const quality of AUDIO_QUALITIES) {
           try {
             const urlData = await meting.url(songId, quality);
             const urlObj = JSON.parse(urlData);
             if (urlObj.url) {
               url = urlObj.url;
+              source = String(quality);
+              qualityHits[String(quality)] += 1;
               break;
             }
           } catch (e) {
@@ -45,7 +61,18 @@ export const GET: APIRoute = async () => {
         }
 
         if (!url) {
-          console.warn(`No playable URL returned: id [${songId}], tried qualities [${AUDIO_QUALITIES.join(", ")}]`);
+          url = getNeteaseOuterUrl(songId);
+          source = "outer";
+          qualityHits.outer += 1;
+          console.warn(`No direct playable URL returned, use outer fallback: id [${songId}], tried qualities [${AUDIO_QUALITIES.join(", ")}]`);
+        }
+
+        if (!url) {
+          qualityHits.none += 1;
+        }
+
+        if (debug) {
+          songDiagnostics.push({ id: songId, source, hasUrl: Boolean(url) });
         }
 
         // 获取歌词
@@ -81,10 +108,28 @@ export const GET: APIRoute = async () => {
     // 过滤掉没有 URL 的歌曲
     const validAudio = audio.filter(song => song.url);
 
-    return new Response(JSON.stringify(validAudio), {
+    console.info(
+      `[Music API] total=${songs.length}, valid=${validAudio.length}, qualityHits=${JSON.stringify(qualityHits)}`
+    );
+
+    const responsePayload = debug
+      ? {
+          audio: validAudio,
+          debug: {
+            playlistSize: songs.length,
+            validSize: validAudio.length,
+            qualityHits,
+            songDiagnostics,
+          },
+        }
+      : validAudio;
+
+    return new Response(JSON.stringify(responsePayload), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
+        "X-Music-Playlist-Size": String(songs.length),
+        "X-Music-Valid-Size": String(validAudio.length),
       },
     });
   } catch (error) {
