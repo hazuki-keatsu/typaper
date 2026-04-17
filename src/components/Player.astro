@@ -37,9 +37,6 @@ import "@/styles/aplayer.css";
         audio: audio,
       });
 
-      // 默认隐藏悬浮歌词
-      ap.lrc.hide();
-
       console.log("[APlayer] 初始化成功，共", audio.length, "首歌曲");
     } catch (e) {
       console.error("APlayer 初始化失败", e);
