@@ -29,24 +29,29 @@ export const GET: APIRoute = async () => {
       songs.map(async (song: any) => {
         // 获取歌曲 URL
         let url = "";
+        let songId = song.url_id || song.id;
         for (const quality of AUDIO_QUALITIES) {
           try {
-            const urlData = await meting.url(song.url_id || song.id, quality);
+            const urlData = await meting.url(songId, quality);
             const urlObj = JSON.parse(urlData);
             if (urlObj.url) {
               url = urlObj.url;
               break;
             }
-          } catch(e) {
-            console.error("Fail to get song: id [" + song.url_id || song.id + "], e [" + e + "]")
+          } catch (e) {
+            console.error(`Fail to get song: id [${songId}], quality [${quality}], e [${String(e)}]`);
             // Continue trying lower bitrate fallback
           }
+        }
+
+        if (!url) {
+          console.warn(`No playable URL returned: id [${songId}], tried qualities [${AUDIO_QUALITIES.join(", ")}]`);
         }
 
         // 获取歌词
         let lrc = "";
         try {
-          const lyricData = await meting.lyric(song.lyric_id || song.id);
+          const lyricData = await meting.lyric(song.lyric_id || songId);
           const lyricObj = JSON.parse(lyricData);
           lrc = lyricObj.lyric || "";
         } catch {
@@ -56,7 +61,7 @@ export const GET: APIRoute = async () => {
         // 获取封面
         let cover = "";
         try {
-          const picData = await meting.pic(song.pic_id || song.id, 300);
+          const picData = await meting.pic(song.pic_id || songId, 300);
           const picObj = JSON.parse(picData);
           cover = picObj.url || "";
         } catch {
