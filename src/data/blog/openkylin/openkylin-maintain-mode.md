@@ -50,3 +50,17 @@ mm-cli -s
 ```bash
 sudo apt install qemu-system
 ```
+
+但是，由于 openKylin 自己的 apt 软件仓库的证书出现了问题，导致用户无法正常通过 apt 安装。所以，你可能需要手动禁用证书验证：
+
+```bash
+# 创建 apt 配置文件禁用证书验证
+echo 'Acquire::https::archive.openkylin.top::Verify-Peer "false";' | sudo tee /etc/apt/apt.conf.d/99verify-peer.conf
+echo 'Acquire::https::archive.openkylin.top::Verify-Host "false";' | sudo tee -a /etc/apt/apt.conf.d/99verify-peer.conf
+```
+
+```bash
+# 删除相关配置文件
+sudo rm /etc/apt/apt.conf.d/99verify-peer.conf
+sudo apt update
+```
