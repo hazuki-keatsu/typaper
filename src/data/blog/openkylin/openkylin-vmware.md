@@ -6,7 +6,7 @@ protocol: CC BY-NC-ND
 featured: false
 draft: false
 tags:
-  - OS
+  - openKylin
 description: 介绍了在试用openKylin操作系统时的各种问题的解决方法，引导大家安装并使用openKylin。
 ---
 
