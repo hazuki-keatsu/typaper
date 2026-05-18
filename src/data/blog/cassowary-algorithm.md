@@ -3,7 +3,7 @@ title: The Cassowary linear arithmetic constraint solving algorithm
 author: Hazuki Keatsu
 pubDatetime: 2026-03-11T06:03:21.353Z
 protocol: CC BY
-featured: true
+featured: false
 draft: false
 tags:
   - Cassowary

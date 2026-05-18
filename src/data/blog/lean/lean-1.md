@@ -3,7 +3,7 @@ title: Lean 4 Introduction-1
 author: Hazuki Keatsu
 pubDatetime: 2026-03-06T23:56:31+08:00
 protocol: CC BY
-featured: true
+featured: false
 draft: false
 tags:
   - Lean 4
