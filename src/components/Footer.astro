@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
+import LinkButton from "./LinkButton.astro";
 
 const currentYear = new Date().getFullYear();
 
@@ -28,7 +29,7 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
       <span>All rights reserved.</span>
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
-      <span>鄂ICP备2025143996号</span>
+      <LinkButton href="/blogroll" class="underline-offset-2 underline hover:text-accent transition-colors">Blogroll</LinkButton>
     </div>
   </div>
 </footer>

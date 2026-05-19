@@ -41,4 +41,15 @@ const daily = defineCollection({
     }),
 });
 
-export const collections = { blog, daily };
+const blogroll = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/blogroll" }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      url: z.string().url(),
+      description: z.string(),
+      avatar: image().optional(),
+    }),
+});
+
+export const collections = { blog, daily, blogroll };
