@@ -111,10 +111,10 @@ description: 操作系统课程学习记录
 
 ### 2. 多级页表
 - 32位地址可划分为：页目录（PT1）、页表（PT2）、页内偏移。
-
 - 示例：0x00403004 → PT1=1, PT2=3, Offset=4，映射到物理地址4206592~4210687。
 
-  <img src="/images/operating-system/image-20260518144511839.png" alt="image-20260518144511839" style="zoom:50%;" align=left />
+  <img src="/images/operating-system/image-20260518144511839.png" alt="image-20260518144511839" style="zoom:50%;" />
+
 
 ### 3. 页表项（PTE, Page Table Entry）字段
 - **页框号**(Page frame number)：物理页框地址。
@@ -396,7 +396,7 @@ description: 操作系统课程学习记录
 - 一维地址空间中，多个表（如编译器符号表、代码段、栈）可能相互冲突。
 - 分段允许每个表独立增长或收缩。
 
-<img src="/images/operating-system/image-20260518220144864.png" alt="image-20260518220144864" style="zoom:50%;" align=left />
+<img src="/images/operating-system/image-20260518220144864.png" alt="image-20260518220144864" style="zoom:50%;" />
 
 ### 2. 分段的优点
 - 简化动态数据结构的处理。
@@ -408,7 +408,7 @@ description: 操作系统课程学习记录
 - 分段：逻辑上独立的地址空间，段大小可变。
 - 分页：统一的物理页框，透明于程序员。
 
-<img src="/images/operating-system/image-20260518220305206.png" alt="image-20260518220305206" style="zoom:50%;" align=left />
+<img src="/images/operating-system/image-20260518220305206.png" alt="image-20260518220305206" style="zoom:50%;" />
 
 ### 4. 纯分段的实现
 - 内存中会出现**棋盘状碎片（checkerboarding）**，需通过**内存紧凑**解决。
