@@ -20,15 +20,17 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
     class:list={[
       "py-6 sm:py-4",
       "border-t border-border",
-      "flex flex-col items-center justify-between md:flex-row-reverse",
+      "flex flex-col items-center justify-between lg:flex-row-reverse",
     ]}
   >
     <Socials />
-    <div class="my-2 flex flex-col items-center whitespace-nowrap md:flex-row">
+    <div class="my-2 flex flex-col items-center whitespace-nowrap lg:flex-row">
       <span>Copyright &#169; {currentYear} Hazuki Keatsu</span>
-      <span class="hidden md:inline">&nbsp;|&nbsp;</span>
+      <span class="hidden lg:inline">&nbsp;|&nbsp;</span>
       <span>All rights reserved.</span>
-      <span class="hidden md:inline">&nbsp;|&nbsp;</span>
+      <span class="hidden lg:inline">&nbsp;|&nbsp;</span>
+      <LinkButton href="https://icp.gov.moe/?keyword=20255960" class="hover:text-accent transition-colors">萌ICP备20255960号</LinkButton>
+      <span class="hidden lg:inline">&nbsp;|&nbsp;</span>
       <LinkButton href="/blogroll" class="underline-offset-2 underline hover:text-accent transition-colors">Blogroll</LinkButton>
     </div>
   </div>
