@@ -31,7 +31,7 @@ description: 操作系统课程学习记录
   - 记录序列（b）（如80字符卡片）：文件由一组固定长度或可变长度的记录（record）组成，操作系统提供对记录的读取、写入和定位操作。
   - 树形结构（c）（大型机商业数据处理）：文件内部组织成树形结构，节点包含键值字段，支持按关键字快速检索。
 
-![image-20260520210845210](/public/images/operating-system/image-20260520210845210.png)
+![image-20260520210845210](/images/operating-system/image-20260520210845210.png)
 
 ### 文件类型
 - 按用途：系统文件、用户文件、库文件
@@ -109,7 +109,7 @@ description: 操作系统课程学习记录
 
 > 磁盘的第0扇区称为MBR（主引导记录），用于启动计算机。
 
-![image-20260521092811177](/public/images/operating-system/image-20260521092811177.png)
+![image-20260521092811177](/images/operating-system/image-20260521092811177.png)
 
 - 分区表：给出每个分区的开始和结束的地址
 - 启动块：放置着文件系统启动分区
@@ -123,7 +123,7 @@ description: 操作系统课程学习记录
 
 #### 连续分配
 
-![image-20260521093351196](/public/images/operating-system/image-20260521093351196.png)
+![image-20260521093351196](/images/operating-system/image-20260521093351196.png)
 
 **原理**：将每个文件作为一连串连续的数据块存储在磁盘上。目录项只需记录文件的起始块号和块数。
 
@@ -139,7 +139,7 @@ description: 操作系统课程学习记录
 
 #### 链表分配
 
-![image-20260521093704323](/public/images/operating-system/image-20260521093704323.png)
+![image-20260521093704323](/images/operating-system/image-20260521093704323.png)
 
 **原理**：文件不是连续存放的，而是将各个数据块串联成一条链表。每个数据块在末尾留出一定字节作为指针，指向下一个数据块的磁盘地址。目录项只需要存储第一个块的地址，然后顺着指针就能遍历整个文件。
 
@@ -154,7 +154,7 @@ description: 操作系统课程学习记录
 
 #### 文件分配表 (FAT) —— 存储在内存中的链表
 
-<img src="/public/images/operating-system/image-20260521093934129.png" alt="image-20260521093934129" style="zoom:50%;" />
+<img src="/images/operating-system/image-20260521093934129.png" alt="image-20260521093934129" style="zoom:50%;" />
 
 **原理**：将链表指针从数据块内部"抽出来"集中放在一个单独的表中，这个表就是 **FAT（File Allocation Table，文件分配表）**。FAT 存放在内存中，由磁盘上每个块对应一个表项。目录项仍然只存首块号，通过查找 FAT 即可在内存中跟随链表，不必每次访问磁盘数据块上的指针。
 
@@ -171,7 +171,7 @@ FAT 在历史上有重要应用：**MS-DOS** 和早期的 **Windows**（包括 W
 
 为每个文件关联一个称为 **i-node（index-node，索引节点）** 的数据结构，该结构列出文件块的属性和磁盘地址。目录中只保存文件名和对应的 i-node 编号，文件的所有元数据和块地址表都集中存储在 i-node 中。
 
-<img src="/public/images/operating-system/image-20260521094507561.png" alt="image-20260521094507561" style="zoom:50%;" />
+<img src="/images/operating-system/image-20260521094507561.png" alt="image-20260521094507561" style="zoom:50%;" />
 
 **i-node 结构**（以 UNIX V7 为例，共 15 个地址指针）：
 - **前 12 个指针**：直接指向数据块（直接块），适合小文件；
@@ -204,7 +204,7 @@ FAT 在历史上有重要应用：**MS-DOS** 和早期的 **Windows**（包括 W
 
 > **现实中的做法**：Windows 98 采用的是"多目录项串联"的方法——长文件名用多个连续的目录项来存储（每个目录项存一段），同时在最后附带一个兼容 MS-DOS 的 8.3 短名目录项。UNIX 则采用"固定目录项 + i-node 引用"的方式，目录项只存文件名和 i-node 号，真正的元数据在 i-node 中。
 
-![image-20260521094941845](/public/images/operating-system/image-20260521094941845.png)
+![image-20260521094941845](/images/operating-system/image-20260521094941845.png)
 
 ### 共享文件
 
@@ -263,14 +263,14 @@ FAT 在历史上有重要应用：**MS-DOS** 和早期的 **Windows**（包括 W
 ### 盘空间管理
 - **块大小**：影响数据速率和空间效率（2-KB是常见的选择）
 
-  ![image-20260521112712489](/public/images/operating-system/image-20260521112712489.png)
+  ![image-20260521112712489](/images/operating-system/image-20260521112712489.png)
 
 - **空闲块管理**：
 
   - 链表方式
   - 位图（更节省空间）
 
-  ![image-20260521112848554](/public/images/operating-system/image-20260521112848554.png)
+  ![image-20260521112848554](/images/operating-system/image-20260521112848554.png)
 
 - **磁盘配额**：多用户系统中，防止单个用户占用过多磁盘空间的机制。系统管理员为每个用户（或用户组）设定两个上限：
   
@@ -328,7 +328,7 @@ LFS有更干净的线程，会花时间环绕扫描日志以压缩。
 
 > ISO 9660 目录
 >
-> ![image-20260521123653762](/public/images/operating-system/image-20260521123653762.png)
+> ![image-20260521123653762](/images/operating-system/image-20260521123653762.png)
 
 ### The CP/M File System
 
@@ -339,7 +339,7 @@ Control Program for Microcomputers，CP/M 微机控制程序
 
 >  CP/M 目录
 >
-> ![image-20260521123953523](/public/images/operating-system/image-20260521123953523.png)
+> ![image-20260521123953523](/images/operating-system/image-20260521123953523.png)
 
 ### The MS-DOS File System
 - 8.3文件名，FAT结构，层次目录
@@ -347,7 +347,7 @@ Control Program for Microcomputers，CP/M 微机控制程序
 
 > MS-DOS 目录
 >
-> ![image-20260521124117140](/public/images/operating-system/image-20260521124117140.png)
+> ![image-20260521124117140](/images/operating-system/image-20260521124117140.png)
 
 ### The Windows 98 File System
 - 长文件名支持（通过多个目录项存储）
@@ -355,11 +355,11 @@ Control Program for Microcomputers，CP/M 微机控制程序
 
 > Windows 98 目录 
 > 
-> ![image-20260521124207404](/public/images/operating-system/image-20260521124207404.png)
+> ![image-20260521124207404](/images/operating-system/image-20260521124207404.png)
 > 
 > Windows 98 长文件名
 > 
-> ![image-20260521124249114](/public/images/operating-system/image-20260521124249114.png)
+> ![image-20260521124249114](/images/operating-system/image-20260521124249114.png)
 
 ### The UNIX V7 File System
 - 多用户，树形结构 + 链接形成有向无环图
@@ -367,11 +367,11 @@ Control Program for Microcomputers，CP/M 微机控制程序
 
 >  UNIX V7 目录
 >
-> <img src="/public/images/operating-system/image-20260521124325175.png" alt="image-20260521124325175" style="zoom:50%;" />
+> <img src="/images/operating-system/image-20260521124325175.png" alt="image-20260521124325175" style="zoom:50%;" />
 >
 > UNIX i节点
 >
-> ![image-20260521124701160](/public/images/operating-system/image-20260521124701160.png)
+> ![image-20260521124701160](/images/operating-system/image-20260521124701160.png)
 
 ### Linux 文件系统
 - **EXT2**：

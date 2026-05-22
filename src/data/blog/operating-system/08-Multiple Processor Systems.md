@@ -21,7 +21,7 @@ description: 操作系统课程学习记录
 - 消息传递多计算机（紧耦合，message passing multi computer, tight-coupled）
 - 广域分布式系统（松耦合，wide area distributed system, loose-coupled）
 
-![image-20260521130344084](/public/images/operating-system/image-20260521130344084.png)
+![image-20260521130344084](/images/operating-system/image-20260521130344084.png)
 
 ---
 
@@ -41,14 +41,14 @@ description: 操作系统课程学习记录
 
     (a)无缓存 (b)有缓存 (c)有缓存和私有主存
 
-    ![image-20260521135439753](/public/images/operating-system/image-20260521135439753.png)
+    ![image-20260521135439753](/images/operating-system/image-20260521135439753.png)
 
   - UMA Multiprocessor Using Crossbar Switches（交叉开关）
 
     - 优点：非阻塞网络（nonblocking network）。
     - 缺点：交叉点数量按n²增长。
 
-    ![image-20260521135743917](/public/images/operating-system/image-20260521135743917.png)
+    ![image-20260521135743917](/images/operating-system/image-20260521135743917.png)
 
   - UMA Multiprocessor Using Multistage Switching Networks（多级交换网络）
 
@@ -61,7 +61,7 @@ description: 操作系统课程学习记录
     | Opcode  | 操作           |
     | Value   | 操作数         |
 
-    ![image-20260521140025145](/public/images/operating-system/image-20260521140025145.png)
+    ![image-20260521140025145](/images/operating-system/image-20260521140025145.png)
 
 - **NUMA（Nonuniform Memory Access，非统一内存访问）**：远程内存访问比本地慢。
 
@@ -78,7 +78,7 @@ description: 操作系统课程学习记录
 - 每个CPU拥有自己的私有内存和私有操作系统副本。
 - 每个OS有自己的表，无进程共享，无页面共享，缓冲区缓存不一致。
 
-![image-20260521140610661](/public/images/operating-system/image-20260521140610661.png)
+![image-20260521140610661](/images/operating-system/image-20260521140610661.png)
 
 #### (2) 主从式多处理器（Master-Slave）
 
@@ -86,21 +86,21 @@ description: 操作系统课程学习记录
 - 所有系统调用重定向到CPU1处理。
 - 缺点：当CPU很多时，主CPU成为瓶颈。
 
-![image-20260521140624986](/public/images/operating-system/image-20260521140624986.png)
+![image-20260521140624986](/images/operating-system/image-20260521140624986.png)
 
 #### (3) 对称多处理器（Symmetric Multiprocessors）
 
 - 内存中只有一份OS，但任何CPU都可以运行它。
 - 为OS关联一个互斥量（锁），使整个系统成为一个大的临界区。
 
-![image-20260521140643034](/public/images/operating-system/image-20260521140643034.png)
+![image-20260521140643034](/images/operating-system/image-20260521140643034.png)
 
 ### 多处理器同步（Multiprocessor Synchronization）
 
 - TSL指令若无法锁定总线则会失败。
 - 为防止此问题，TSL指令必须首先锁定总线，阻止其他CPU访问，然后完成两次内存访问，最后解锁总线。
 
-![image-20260521140742206](/public/images/operating-system/image-20260521140742206.png)
+![image-20260521140742206](/images/operating-system/image-20260521140742206.png)
 
 ### 多处理器调度（Multiprocessor Scheduling）
 
@@ -134,7 +134,7 @@ description: 操作系统课程学习记录
 
 #### 互连拓扑（Interconnection topologies）
 
-![image-20260521141410842](/public/images/operating-system/image-20260521141410842.png)
+![image-20260521141410842](/images/operating-system/image-20260521141410842.png)
 
 - (a) 单开关（single switch）
 - (b) 环形（ring）
@@ -156,7 +156,7 @@ description: 操作系统课程学习记录
 
 #### (1) 多计算机中的网络接口板
 
-![image-20260521142145085](/public/images/operating-system/image-20260521142145085.png)
+![image-20260521142145085](/images/operating-system/image-20260521142145085.png)
 
 #### (2) 如果节点上多个进程需要网络访问发送数据包…
 
@@ -165,7 +165,7 @@ description: 操作系统课程学习记录
 
 #### (3) 节点到网络接口的通信
 
-![image-20260521142504726](/public/images/operating-system/image-20260521142504726.png)
+![image-20260521142504726](/images/operating-system/image-20260521142504726.png)
 
 - 使用发送和接收环（send & receive rings）协调主CPU与板载CPU。
 
@@ -179,14 +179,14 @@ description: 操作系统课程学习记录
 
 #### 阻塞（同步）调用
 
-![image-20260521142547840](/public/images/operating-system/image-20260521142547840.png)
+![image-20260521142547840](/images/operating-system/image-20260521142547840.png)
 
 - (a) 阻塞发送调用（Blocking send call）
 - (b) 非阻塞发送调用（Nonblocking send call）
 
 ### 远程过程调用（Remote Procedure Call, RPC）
 
-![image-20260521142653869](/public/images/operating-system/image-20260521142653869.png)
+![image-20260521142653869](/images/operating-system/image-20260521142653869.png)
 
 - 远程过程调用的步骤图示，存根（stubs）为灰色阴影。
 - 根据计算能力需要，可能在多台边缘服务器（Edge Servers）上部署应用，即分布式应用部署。
@@ -225,7 +225,7 @@ description: 操作系统课程学习记录
 
 通过优化节点分配逻辑，来降低节点之间的交换数据的负载。
 
-![image-20260521144326711](/public/images/operating-system/image-20260521144326711.png)
+![image-20260521144326711](/images/operating-system/image-20260521144326711.png)
 
 图中，（a）的网络交通是30单位，（b）的网络交通是28单位。
 
@@ -263,7 +263,7 @@ description: 操作系统课程学习记录
 
 虚拟机运行客户操作系统，客户操作系统认为自己处于内核模式（实际上处于用户模式）。这称为**虚拟内核模式（virtual kernel mode）**。
 
-![image-20260521145943383](/public/images/operating-system/image-20260521145943383.png)
+![image-20260521145943383](/images/operating-system/image-20260521145943383.png)
 
 这种虚拟化有两种形式：
 
@@ -275,7 +275,7 @@ CPU 指令必须执行在Ring 0 底下， VMware 使用Binary Translation方式�
 
 修改虚拟化作业系统的核心，让虚拟的作业系统可以直接将不能虚拟化的指令自动转换成 VMM可以执行的指令（hypercall），再由VMM去向硬件提出请求（Windows平台不能用）。例如：Xen, KVM, HyperV
 
-![image-20260521150508245](/public/images/operating-system/image-20260521150508245.png)
+![image-20260521150508245](/images/operating-system/image-20260521150508245.png)
 
 **半虚拟化的问题**：
 
@@ -289,14 +289,14 @@ CPU 指令必须执行在Ring 0 底下， VMware 使用Binary Translation方式�
 
 **VMI Linux**：
 
-![image-20260521150957259](/public/images/operating-system/image-20260521150957259.png)
+![image-20260521150957259](/images/operating-system/image-20260521150957259.png)
 
 ### Type 2 Hypervisor
 
 - 作为普通用户程序运行在主机操作系统之上。
 - 首次启动时，会将操作系统安装到其虚拟磁盘上。
 - 示例：VMware Workstation, Parallels, VM VirtualBox
-  <img src="/public/images/operating-system/image-20260521150031780.png" alt="image-20260521150031780" style="zoom: 33%;" />
+  <img src="/images/operating-system/image-20260521150031780.png" alt="image-20260521150031780" style="zoom: 33%;" />
 
 ---
 
@@ -318,7 +318,7 @@ CPU 指令必须执行在Ring 0 底下， VMware 使用Binary Translation方式�
 
 分布式系统通过使用中间件（middleware）实现一致性。
 
-![image-20260521152030378](/public/images/operating-system/image-20260521152030378.png)
+![image-20260521152030378](/images/operating-system/image-20260521152030378.png)
 
 ### 网络硬件（Network Hardware）
 
@@ -327,11 +327,11 @@ CPU 指令必须执行在Ring 0 底下， VMware 使用Binary Translation方式�
 - (a) 经典以太网（classic Ethernet）
 - (b) 交换式以太网（switched Ethernet）
 
-![image-20260521152108517](/public/images/operating-system/image-20260521152108517.png)
+![image-20260521152108517](/images/operating-system/image-20260521152108517.png)
 
 #### 互联网（The Internet）
 
-![image-20260521152126396](/public/images/operating-system/image-20260521152126396.png)
+![image-20260521152126396](/images/operating-system/image-20260521152126396.png)
 
 ### 网络服务与协议（Network Services and Protocols）
 
@@ -347,7 +347,7 @@ CPU 指令必须执行在Ring 0 底下， VMware 使用Binary Translation方式�
 - **TCP（Transmission Control Protocol）**
 - 数据包头部累积（Accumulation of packet headers）
 
-![image-20260521152622514](/public/images/operating-system/image-20260521152622514.png)
+![image-20260521152622514](/images/operating-system/image-20260521152622514.png)
 
 ### 基于文档的中间件（Document-Based Middleware）
 
@@ -357,7 +357,7 @@ CPU 指令必须执行在Ring 0 底下， VMware 使用Binary Translation方式�
 - URL：统一资源定位符。
 - HTTP：超文本传输协议。
 
-![image-20260521152746030](/public/images/operating-system/image-20260521152746030.png)
+![image-20260521152746030](/images/operating-system/image-20260521152746030.png)
 
 #### (2) 浏览器如何获取页面
 

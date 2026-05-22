@@ -108,7 +108,7 @@ LBL实验室被破解：
 ### 物理认证
 磁卡：磁条卡、芯片卡（存储卡、智能卡）  
 
-![image-20260521163341039](/public/images/operating-system/image-20260521163341039.png)
+![image-20260521163341039](/images/operating-system/image-20260521163341039.png)
 
 ### 使用生物识别进行认证
 指纹认证、人脸识别认证、虹膜识别认证。
@@ -190,7 +190,7 @@ LBL实验室被破解：
 
 病毒位于程序前、后、或分散在空闲空间（寄生病毒）：
 
-![image-20260521164623057](/public/images/operating-system/image-20260521164623057.png) 
+![image-20260521164623057](/images/operating-system/image-20260521164623057.png) 
 
 **病毒如何传播：**
 
@@ -198,11 +198,11 @@ LBL实验室被破解：
 
 **杀毒软件及杀毒技术：**
 
-![image-20260521165018996](/public/images/operating-system/image-20260521165018996.png)
+![image-20260521165018996](/images/operating-system/image-20260521165018996.png)
 
 (a)正常程序 (b)感染程序 (c)压缩感染程序 (d)加密病毒 (c)压缩+加密病毒  
 
-![image-20260521165150751](/public/images/operating-system/image-20260521165150751.png)
+![image-20260521165150751](/images/operating-system/image-20260521165150751.png)
 
 上面的所有的代码做相同的操作。
 
@@ -230,7 +230,7 @@ LBL实验室被破解：
 
 **核心概念**：保护领域是一个 **(对象, 权限)** 对的集合，规定了在该领域中运行的进程可以对哪些资源执行哪些操作。每个对象（文件、设备、进程等）在不同领域中可能有不同的访问权限。
 
-![image-20260521165818129](/public/images/operating-system/image-20260521165818129.png)
+![image-20260521165818129](/images/operating-system/image-20260521165818129.png)
 
 **UNIX 中的体现**：UNIX 的保护域由 (UID, GID) 决定。同一个进程在不同时刻可以处于不同保护域：
 
@@ -315,7 +315,7 @@ LBL实验室被破解：
 
 TCB包括：进程创建、切换、内存映射管理、文件与I/O管理
 
-![image-20260521181639127](/public/images/operating-system/image-20260521181639127.png)
+![image-20260521181639127](/images/operating-system/image-20260521181639127.png)
 
 ### 安全系统的正式模型
 - 保护矩阵上的六种原语操作：  
@@ -334,7 +334,7 @@ TCB包括：进程创建、切换、内存映射管理、文件与I/O管理
   - *属性：进程只能写同级或更高级对象  
   - 缺点：保证机密性，不保证完整性  
 
-  ![image-20260521182002270](/public/images/operating-system/image-20260521182002270.png)
+  ![image-20260521182002270](/images/operating-system/image-20260521182002270.png)
 
 - **Biba模型**：  
 

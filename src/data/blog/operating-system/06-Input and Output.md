@@ -31,7 +31,7 @@ description: 操作系统课程学习记录
   - 除了控制寄存器外，许多设备还有**数据缓冲区**用来给操作系统写入数据。
 
 
-![image-20260520093154496](/public/images/operating-system/image-20260520093154496.png)
+![image-20260520093154496](/images/operating-system/image-20260520093154496.png)
 
 - **独立I/O空间**：使用专用I/O指令，使用独立于主存的地址空间（如上图a）。
 - **内存映射I/O空间**：所有的控制寄存器映射到主存空间，每个寄存器拥有独立的内存地址，但是没有内存空间分配（如上图b）。
@@ -48,13 +48,13 @@ description: 操作系统课程学习记录
 - 内存字缓存机制对于控制寄存器是很糟糕的，选择性禁用缓存功能会增加额外的成本。
 - 如果只有一个地址空间，所有的I/O设备都必须检查所有的内存引用，以确定及时响应。大多数的现代计算机都有专用的告诉内存总线，因此I/O设备无法在内存总线上看到内存地址。
 
-![image-20260520094246933](/public/images/operating-system/image-20260520094246933.png)
+![image-20260520094246933](/images/operating-system/image-20260520094246933.png)
 
 ### 4. DMA（直接内存访问）
 - 允许设备直接与内存交换数据，减少CPU干预。
 - 适合大批量数据传输。
 
-![image-20260520094426890](/public/images/operating-system/image-20260520094426890.png)
+![image-20260520094426890](/images/operating-system/image-20260520094426890.png)
 
 ### 5. 中断机制
 - 设备完成任务后触发中断，CPU暂停当前工作，执行中断服务程序。
@@ -69,7 +69,7 @@ description: 操作系统课程学习记录
 ### 2. 三种I/O方式
 - **程序控制I/O**：CPU忙等待，效率低。
 
-  ![image-20260520095337096](/public/images/operating-system/image-20260520095337096.png)
+  ![image-20260520095337096](/images/operating-system/image-20260520095337096.png)
 
 - **中断驱动I/O**：每字符中断一次，适合低速设备。
 
@@ -81,7 +81,7 @@ description: 操作系统课程学习记录
 
 ## 三、I/O 软件层次结构
 
-![image-20260520095553980](/public/images/operating-system/image-20260520095553980.png)
+![image-20260520095553980](/images/operating-system/image-20260520095553980.png)
 
 1. **中断处理程序**：
    - 中断处理程序最好隐藏起来。让驱动程序启动一个I/O操作块，直到中断通知完成。
@@ -112,25 +112,25 @@ description: 操作系统课程学习记录
 ### 1. RAID(Redundant Array of Independent Disk ) 级别
 - **RAID 0**：条带化，无冗余，数据被拆散在多个硬盘中。
 
-  <img src="/public/images/operating-system/image-20260520134337011.png" alt="image-20260520134337011" style="zoom: 33%;" />
+  <img src="/images/operating-system/image-20260520134337011.png" alt="image-20260520134337011" style="zoom: 33%;" />
 
 - **RAID 1**：镜像，两个硬盘的数据一模一样。
 
-  <img src="/public/images/operating-system/image-20260520134351029.png" alt="image-20260520134351029" style="zoom:33%;" />
+  <img src="/images/operating-system/image-20260520134351029.png" alt="image-20260520134351029" style="zoom:33%;" />
 
 - **RAID 2**：在字的基础上工作，甚至可能在字节的基础上工作。带奇偶校验位的汉明编码（丢失一个驱动器不会造成问题）
 
-  <img src="/public/images/operating-system/image-20260520134400275.png" alt="image-20260520134400275" style="zoom:33%;" />
+  <img src="/images/operating-system/image-20260520134400275.png" alt="image-20260520134400275" style="zoom:33%;" />
 
 - **RAID 3**：RAID 2的简化版本。每个数据字计算一个奇偶校验位，并写入奇偶校验驱动器。
 
-  <img src="/public/images/operating-system/image-20260520134419966.png" alt="image-20260520134419966" style="zoom:33%;" />
+  <img src="/images/operating-system/image-20260520134419966.png" alt="image-20260520134419966" style="zoom:33%;" />
 
 - **RAID 4/5**：4级和5级依然是用条状，而不是用奇偶校验的单个单词。
   - 4级类似于0级，是写入一个额外驱动器上的对条奇偶校验。（校验驱动器负载沉重）
   - 第5级：将校验位均匀分布在所有驱动器上，采用轮询方式。
 
-  <img src="/public/images/operating-system/image-20260520134436126.png" alt="image-20260520134436126" style="zoom:33%;" />
+  <img src="/images/operating-system/image-20260520134436126.png" alt="image-20260520134436126" style="zoom:33%;" />
 
 - **RAID 10/01/50**
   - RAID 1+0是先镜象再分区数据，再将所有硬盘分为两组，视为是RAID 0的最低组合，然后将这两组各自视为RAID 1运作。
@@ -141,11 +141,11 @@ description: 操作系统课程学习记录
 
 - CD/CD-ROM
 
-  ![image-20260520134555417](/public/images/operating-system/image-20260520134555417.png)
+  ![image-20260520134555417](/images/operating-system/image-20260520134555417.png)
 
 - DVD
 
-  ![image-20260520135137509](/public/images/operating-system/image-20260520135137509.png)
+  ![image-20260520135137509](/images/operating-system/image-20260520135137509.png)
 
 ### 3. 磁盘格式化
 
@@ -157,13 +157,13 @@ description: 操作系统课程学习记录
 
 > **柱面歪斜**：每条轨道上第0扇区的位置与前一条轨道存在相差。
 >
-> <img src="/public/images/operating-system/image-20260520140546254.png" alt="image-20260520140546254" style="zoom:50%;" align=left />
+> <img src="/images/operating-system/image-20260520140546254.png" alt="image-20260520140546254" style="zoom:50%;" align=left />
 
 #### 扇区交错
 
 一个带有一个扇区缓冲区的控制器，被赋予读取两个连续扇区的命令。读取磁盘中的第一个扇区并进行ECC计算后，数据必须传输到主存。在转移过程中，下一个区域将从头部飞过。当复制到内存完成后，控制器几乎需要等待整整一个旋转时间，才能让第二个扇区再次绕行。为了避免交错，控制器应能缓冲整条轨道。
 
-![image-20260520172814915](/public/images/operating-system/image-20260520172814915.png)
+![image-20260520172814915](/images/operating-system/image-20260520172814915.png)
 
 ### 4. 磁盘调度算法
 读写磁盘块所需的时间由三个因素决定：
@@ -192,7 +192,7 @@ description: 操作系统课程学习记录
 2. 用备件替换坏矿区（b）
 3. 移动所有扇区以绕过坏扇区（c）
 
-![image-20260520174642670](/public/images/operating-system/image-20260520174642670.png)
+![image-20260520174642670](/images/operating-system/image-20260520174642670.png)
 
 ### 5. SSD
 固态硬盘是一种利用固态存储器存储持久数据的数据存储设备。与基于闪存的存储卡和USB闪存驱动器不同，SSD模拟硬盘驱动器接口，因此在大多数应用中可以轻松替代硬盘。使用SRAM或DRAM（代替闪存）的SSD通常被称为RAM驱动器。
@@ -213,7 +213,7 @@ description: 操作系统课程学习记录
 - 维持一天中的时间：32 位计数器将在 2 年多一点的时间内溢出 (60Hz)。
   - 使用 64 位计数器。使得维护计数器更加昂贵。
   - 维护一天中的时间（以秒为单位），使用辅助计数器对滴答进行计数，直到累积一整秒。
-  - 以刻度为单位进行计数，但要相对于系统启动的时间，而不是相对于固定的外部时刻（1970）。![image-20260520175435207](/public/images/operating-system/image-20260520175435207.png)
+  - 以刻度为单位进行计数，但要相对于系统启动的时间，而不是相对于固定的外部时刻（1970）。![image-20260520175435207](/images/operating-system/image-20260520175435207.png)
 
 - 防止进程运行时间超过允许的时间。
   - 每当进程启动时，调度会初始化一个计数器，以时钟刻数为单位，以对应该进程的量子值。每当时钟中断时，时钟驱动器将量子计数器减少1。当归零时，时钟驱动调用调度器来设置另一个进程。
@@ -254,7 +254,7 @@ description: 操作系统课程学习记录
 - Windows 使用 COM1 和 COM2 端口，
 - 在Unix上，串口行的名称有类似/dev/tty1和/dev/tty2
 
-![image-20260520180330698](/public/images/operating-system/image-20260520180330698.png)
+![image-20260520180330698](/images/operating-system/image-20260520180330698.png)
 
 上图中的计算机和终端完全独立，UART（通用异步收发器）负责字符到串口和串口到字符的转换。
 
@@ -268,7 +268,7 @@ description: 操作系统课程学习记录
 - 矢量图形（vector graphics）：设备可以接受并执行绘制点、线、几何图形和文本等命令。
 - 栅格图形（raster graphics）：设备将输出区域表示为称为像素的矩形点网格。
 
-![image-20260520180934481](/public/images/operating-system/image-20260520180934481.png)
+![image-20260520180934481](/images/operating-system/image-20260520180934481.png)
 
 **输入软件：**
 
@@ -285,11 +285,11 @@ description: 操作系统课程学习记录
 
 - X Windows：终端拥有大量计算能力和内存，能够运行复杂的协议以压缩网络传输的数据量。
 
-  ![image-20260520181347780](/public/images/operating-system/image-20260520181347780.png)
+  ![image-20260520181347780](/images/operating-system/image-20260520181347780.png)
 
 - SLIM(Stateless Low-level Interface Machine)：这个终端非常简单，基本上就是显示像素，几乎不用思考，目的是便宜。
 
-  ![image-20260520181426455](/public/images/operating-system/image-20260520181426455.png)
+  ![image-20260520181426455](/images/operating-system/image-20260520181426455.png)
 
   SLIM协议中传输的信息：
 
