@@ -1,12 +1,12 @@
 ---
-title: 人工智能导论 - 01 - 绪论 人工智能的发展和认知
+title: "Introduction to AI - 01 - Introduction: The Development and Cognition of Artificial Intelligence"
 author: Hazuki Keatsu
-pubDatetime: 2026-05-21T14:46:26Z
+pubDatetime: 2026-05-28T08:40:26Z
 protocol: CC BY-NC
 featured: false
 draft: false
 tags:
-  - 人工智能导论
+  - Introduction to AI
 description: 人工智能导论课程学习记录
 ---
 
