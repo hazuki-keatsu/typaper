@@ -54,7 +54,7 @@ html[data-theme="dark"] {
 }
 
 @utility max-w-app {
-  @apply max-w-5xl;
+  @apply max-w-4xl;
 }
 
 @utility app-layout {

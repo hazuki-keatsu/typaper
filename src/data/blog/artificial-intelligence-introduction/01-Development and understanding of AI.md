@@ -1,5 +1,5 @@
 ---
-title: 人工智能导论-绪论-人工智能的发展和认知
+title: 人工智能导论 - 01 - 绪论 人工智能的发展和认知
 author: Hazuki Keatsu
 pubDatetime: 2026-05-21T14:46:26Z
 protocol: CC BY-NC
