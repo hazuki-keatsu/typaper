@@ -3,7 +3,6 @@ import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 
 export const BLOG_PATH = "src/data/blog";
-export const DAILY_PATH = "src/data/daily";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
@@ -26,21 +25,6 @@ const blog = defineCollection({
     }),
 });
 
-const daily = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: `./${DAILY_PATH}` }),
-  schema: () =>
-    z.object({
-      author: z.string().default(SITE.author),
-      pubDatetime: z.date(),
-      modDatetime: z.date().optional().nullable(),
-      title: z.string(),
-      slug: z.string().optional(),
-      draft: z.boolean().optional(),
-      canonicalURL: z.string().optional(),
-      timezone: z.string().optional(),
-    }),
-});
-
 const blogroll = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/blogroll" }),
   schema: ({ image }) =>
@@ -52,4 +36,4 @@ const blogroll = defineCollection({
     }),
 });
 
-export const collections = { blog, daily, blogroll };
+export const collections = { blog, blogroll };

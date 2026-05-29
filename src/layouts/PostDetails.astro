@@ -10,7 +10,7 @@ import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import { getPath } from "@/utils/getPath";
-import { slugifyStr } from "@/utils/slugify";
+import { slugifyStr, toTransitionName } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
@@ -94,7 +94,7 @@ const nextPost =
     data-pagefind-body
   >
     <h1
-      transition:name={slugifyStr(title.replaceAll(".", "-"))}
+      transition:name={toTransitionName(title)}
       class="inline-block text-2xl font-bold text-accent sm:text-3xl"
     >
       {title}

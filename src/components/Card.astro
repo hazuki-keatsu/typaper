@@ -1,13 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { DAILY_PATH } from "@/content.config";
-import { slugifyStr } from "@/utils/slugify";
+import { toTransitionName } from "@/utils/slugify";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
-} & (CollectionEntry<"blog"> | CollectionEntry<"daily">);
+} & (CollectionEntry<"blog">);
 
 const {
   variant: Heading = "h2",
@@ -15,7 +14,6 @@ const {
   data,
   filePath,
   body,
-  collection,
 } = Astro.props;
 
 const title = data.title;
@@ -24,14 +22,7 @@ const datetimeProps = {
   modDatetime: data.modDatetime,
   timezone: data.timezone,
 };
-const href =
-  collection === "daily"
-    ? getPath(id, filePath, {
-        basePath: "/daily",
-        contentPath: DAILY_PATH,
-        slug: data.slug,
-      })
-    : getPath(id, filePath, { slug: data.slug });
+const href = getPath(id, filePath, { slug: data.slug });
 
 const preview = (body ?? "")
   .replace(/```[\s\S]*?```/g, " ")
@@ -61,7 +52,7 @@ const description =
     ]}
   >
     <Heading
-      style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
+      style={{ viewTransitionName: toTransitionName(title) }}
     >
       {title}
     </Heading>
