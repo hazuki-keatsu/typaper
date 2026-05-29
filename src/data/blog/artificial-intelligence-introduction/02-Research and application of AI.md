@@ -7,6 +7,7 @@ featured: false
 draft: false
 tags:
   - Introduction to AI
+  - Note
 description: 人工智能导论课程学习记录
 ---
 

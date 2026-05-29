@@ -7,6 +7,7 @@ featured: false
 draft: false
 tags:
   - OS
+  - Note
 description: 操作系统课程学习记录
 ---
 
