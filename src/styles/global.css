@@ -70,3 +70,31 @@ html[data-theme="dark"] {
 :target {
   scroll-margin-block: 1rem;
 }
+
+/* Mermaid diagram theme switching */
+.mermaid-diagram {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+.mermaid-diagram figure {
+  margin: 0;
+}
+.mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+.mermaid-light {
+  display: block;
+}
+.mermaid-dark {
+  display: none;
+}
+[data-theme="dark"] .mermaid-light {
+  display: none;
+}
+[data-theme="dark"] .mermaid-dark {
+  display: block;
+}

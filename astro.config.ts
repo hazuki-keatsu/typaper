@@ -3,8 +3,12 @@ import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
+import { unified } from "@astrojs/markdown-remark";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import remarkMermaid from "./src/utils/remarkMermaid";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -12,9 +16,6 @@ import {
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
-
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,14 +28,20 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [
-      remarkMath,
-      remarkToc,
-      [remarkCollapse, { test: "Table of contents" }],
-    ],
-    rehypePlugins: [rehypeKatex],
+    syntaxHighlight: {
+      type: "shiki",
+      excludeLangs: ["mermaid"],
+    },
+    processor: unified({
+      remarkPlugins: [
+        remarkMath,
+        remarkToc,
+        remarkMermaid,
+        [remarkCollapse, { test: "Table of contents" }],
+      ],
+      rehypePlugins: [rehypeKatex],
+    }),
     shikiConfig: {
-      // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
       defaultColor: false,
       wrap: false,
@@ -65,5 +72,4 @@ export default defineConfig({
       }),
     },
   },
-
 });

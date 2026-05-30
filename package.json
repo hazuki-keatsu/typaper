@@ -5,16 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
-    "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "eslint .",
-    "new:daily": "node scripts/create-daily.ts new-daily",
-    "new:blog": "node scripts/create-blog.ts new-post"
+    "lint": "eslint ."
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.0",
     "@astrojs/mdx": "^6.0.0",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
@@ -25,8 +23,10 @@
     "aplayer": "^1.10.1",
     "astro": "^6.4.2",
     "dayjs": "^1.11.21",
+    "jsdom": "^29.1.1",
     "katex": "^0.16.35",
     "lodash.kebabcase": "^4.1.1",
+    "mermaid": "^11.15.0",
     "rehype-katex": "^7.0.1",
     "remark-collapse": "^0.1.2",
     "remark-math": "^6.0.0",
