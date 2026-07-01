@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import Meting from "@meting/core";
-import { SITE } from "src/config";
+import { SITE } from "../../config";
 
 export const prerender = false;
 
@@ -20,16 +20,13 @@ function getNeteaseOuterUrl(songId: string | number) {
 
 export const GET: APIRoute = async ({ url: requestUrl }) => {
   if (import.meta.env.DEV) {
-    console.log("[Music API] Dev mode")
-    return new Response(
-      JSON.stringify({ error: "Dev mode" }),
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    console.log("[Music API] Dev mode");
+    return new Response(JSON.stringify({ error: "Dev mode" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
   try {
     // 初始化 Meting，使用网易云音乐
@@ -47,7 +44,11 @@ export const GET: APIRoute = async ({ url: requestUrl }) => {
       outer: 0,
       none: 0,
     };
-    const songDiagnostics: Array<{ id: string | number; source: string; hasUrl: boolean }> = [];
+    const songDiagnostics: Array<{
+      id: string | number;
+      source: string;
+      hasUrl: boolean;
+    }> = [];
 
     // 转换为 APlayer 格式
     const audio: APlayerAudio[] = await Promise.all(
@@ -67,7 +68,9 @@ export const GET: APIRoute = async ({ url: requestUrl }) => {
               break;
             }
           } catch (e) {
-            console.error(`Fail to get song: id [${songId}], quality [${quality}], e [${String(e)}]`);
+            console.error(
+              `Fail to get song: id [${songId}], quality [${quality}], e [${String(e)}]`
+            );
             // Continue trying lower bitrate fallback
           }
         }
@@ -76,7 +79,9 @@ export const GET: APIRoute = async ({ url: requestUrl }) => {
           url = getNeteaseOuterUrl(songId);
           source = "outer";
           qualityHits.outer += 1;
-          console.warn(`No direct playable URL returned, use outer fallback: id [${songId}], tried qualities [${AUDIO_QUALITIES.join(", ")}]`);
+          console.warn(
+            `No direct playable URL returned, use outer fallback: id [${songId}], tried qualities [${AUDIO_QUALITIES.join(", ")}]`
+          );
         }
 
         if (!url) {
@@ -109,7 +114,9 @@ export const GET: APIRoute = async ({ url: requestUrl }) => {
 
         return {
           name: song.name,
-          artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
+          artist: Array.isArray(song.artist)
+            ? song.artist.join(", ")
+            : song.artist,
           url,
           cover,
           lrc,
@@ -146,14 +153,11 @@ export const GET: APIRoute = async ({ url: requestUrl }) => {
     });
   } catch (error) {
     console.error("[Music API] 获取歌单失败:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to fetch playlist" }),
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    return new Response(JSON.stringify({ error: "Failed to fetch playlist" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 };

@@ -12,7 +12,8 @@ import "@/styles/aplayer.css";
   // 使用本地 Astro API 获取歌单数据
   document.addEventListener("astro:page-load", async () => {
     const container = document.getElementById("aplayer-container");
-    if (!container || container.hasAttribute("data-aplayer-initialized")) return;
+    if (!container || container.hasAttribute("data-aplayer-initialized"))
+      return;
 
     container.setAttribute("data-aplayer-initialized", "true");
 

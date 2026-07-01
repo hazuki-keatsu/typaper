@@ -6,15 +6,9 @@ import Datetime from "./Datetime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
-} & (CollectionEntry<"blog">);
+} & CollectionEntry<"blog">;
 
-const {
-  variant: Heading = "h2",
-  id,
-  data,
-  filePath,
-  body,
-} = Astro.props;
+const { variant: Heading = "h2", id, data, filePath, body } = Astro.props;
 
 const title = data.title;
 const datetimeProps = {
@@ -51,9 +45,7 @@ const description =
       "focus-visible:no-underline focus-visible:underline-offset-0",
     ]}
   >
-    <Heading
-      style={{ viewTransitionName: toTransitionName(title) }}
-    >
+    <Heading style={{ viewTransitionName: toTransitionName(title) }}>
       {title}
     </Heading>
   </a>

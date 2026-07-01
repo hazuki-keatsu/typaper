@@ -20,7 +20,7 @@ entries.sort((a, b) => a.data.name.localeCompare(b.data.name));
       {
         entries.map(entry => (
           <lin class="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
-            <div class="flex size-10 shrink-0 overflow-hidden rounded-full bg-muted justify-center items-center">
+            <div class="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted">
               {entry.data.avatar ? (
                 <Image
                   src={entry.data.avatar}
@@ -36,7 +36,7 @@ entries.sort((a, b) => a.data.name.localeCompare(b.data.name));
                 href={entry.data.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-medium underline underline-offset-2 transition-colors text-foreground hover:text-accent"
+                class="font-medium text-foreground underline underline-offset-2 transition-colors hover:text-accent"
               >
                 {entry.data.name}
               </LinkButton>

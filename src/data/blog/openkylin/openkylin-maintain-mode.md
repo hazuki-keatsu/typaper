@@ -47,6 +47,7 @@ mm-cli -s
 ---
 
 开启维护模式后就能自由安装软件，例如安装 `qemu` 什么的。
+
 ```bash
 sudo apt install qemu-system
 ```

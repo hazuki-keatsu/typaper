@@ -5,7 +5,7 @@ pubDatetime: 2026-04-21T13:25:42.510Z
 protocol: CC BY-NC-ND
 featured: false
 draft: false
-tags: 
+tags:
   - openKylin
 description: 如何在交叉编译不同内核的 Linux 内核模块代码。
 ---
@@ -19,23 +19,25 @@ description: 如何在交叉编译不同内核的 Linux 内核模块代码。
 ## 环境介绍
 
 主机是一个运行在 VMware Workstation 中的 openKylin 虚拟机：
+
 ```plaintext
-        #####           hazuki@hazuki-pc 
-       #######          ---------------- 
-       ##O#O##          OS: openKylin 2.0 SP2 x86_64 
-       #######          Host: VMware20,1 None 
-     ###########        Kernel: 6.6.0-19-generic 
-    #############       Uptime: 5 hours, 36 mins 
-   ###############      Packages: 1805 (dpkg) 
-   ################     Shell: bash 5.2.21 
-  #################     Resolution: 1280x800 
-#####################   Terminal: node 
-#####################   CPU: Intel i7-14650HX (4) @ 2.419GHz 
-  #################     GPU: 00:0f.0 VMware SVGA II Adapter 
-                        Memory: 2991MiB / 7886MiB 
+        #####           hazuki@hazuki-pc
+       #######          ----------------
+       ##O#O##          OS: openKylin 2.0 SP2 x86_64
+       #######          Host: VMware20,1 None
+     ###########        Kernel: 6.6.0-19-generic
+    #############       Uptime: 5 hours, 36 mins
+   ###############      Packages: 1805 (dpkg)
+   ################     Shell: bash 5.2.21
+  #################     Resolution: 1280x800
+#####################   Terminal: node
+#####################   CPU: Intel i7-14650HX (4) @ 2.419GHz
+  #################     GPU: 00:0f.0 VMware SVGA II Adapter
+                        Memory: 2991MiB / 7886MiB
 ```
 
 目标平台是一个运行在 QEMU 中的极简 Linux 系统，由于这个系统没有包管理，就能给大家展示 `uname -a` 的结果了：
+
 ```bash
 Linux buildroot 6.6.48 #2 SMP PREEMPT_DYNAMIC Sat Sep 13 17:42:28 CST 2025 x86_64 GNU/Linux
 ```
@@ -49,6 +51,7 @@ Linux buildroot 6.6.48 #2 SMP PREEMPT_DYNAMIC Sat Sep 13 17:42:28 CST 2025 x86_6
 首先你需要得到你要编译到的 Linux 系统的内核代码，因为我的场景是编译内核模块，所以通常会需要使用到相应内核提供的工具，我这里直接下载了 `linux-kernel-6.6.48` 的源码的压缩包。
 
 1. 将 linux 内核源码解压出来
+
 ```bash
 # 进入存放源码压缩包的目录
 cd /mnt/hgfs/openkylin_shared/3-stu-ne
@@ -59,6 +62,7 @@ tar -xzvf vm/linux.tar.gz -C ~/tools/linux-kernel-6.6.48
 ```
 
 2. 准备内核编译环境
+
 ```bash
 # 进入内核代码目录
 cd ~/tools/linux-kernel-6.6.48/linux
@@ -69,6 +73,7 @@ make modules_prepare
 ```
 
 3. 编写构建 Makefile
+
 ```makefile
 # 放在你的内核模块所在的目录
 CC=gcc
@@ -90,6 +95,7 @@ endif
 ```
 
 4. 编译模块
+
 ```bash
 # 进入你的模块代码所在的目录
 cd /mnt/hgfs/openkylin_shared/3-stu-ne/code
@@ -104,6 +110,7 @@ make all
 由于这个精简的系统里面什么都没有，所以大家习以为常的各种网络文件传输的方案肯定是不行的。不过，我们可以将整个外部系统的根目录挂载到内部系统的某个目录下实现对文件的读写。
 
 1. 在 QEMU 中挂载当前的系统
+
 ```bash
 # 启动 QEMU
 qemu-system-x86_64 \ <各种你需要的参数>
@@ -119,13 +126,16 @@ mount -t 9p -o trans=virtio host0 /mnt/host
 ```
 
 2. 进入工作目录并安装内核模块
+
 ```bash
 # 进入工作目录
 cd /mnt/host/mnt/hgfs/openkylin_shared/3-stu-ne/code/
 # 安装模块，由于我需要使用 edu 的硬件，所以我还要创建对应的设备节点
 insmod edu_dev.ko && mknod /dev/edu c 200 200
 ```
+
 命令执行的结果：
+
 ```bash
 [ 2344.720613] edu_dev: loading out-of-tree module taints kernel.
 [ 2344.726290] HELLO PCI
@@ -140,6 +150,7 @@ insmod edu_dev.ko && mknod /dev/edu c 200 200
 ### 额外的内容
 
 顺带讲一下如何卸载模块，对于我的模块而言，我不仅需要卸载模块，还需要删除对应的设备节点：
+
 ```bash
 rmmod edu_dev
 rm -rf /dev/edu

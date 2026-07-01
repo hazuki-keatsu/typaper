@@ -35,6 +35,7 @@ description: ""
 搭建博客的同时还丰富了我的 [Github 主页的 Readme 文档](https://github.com/hazuki-keatsu/hazuki-keatsu)，添加上了我常用的技术栈的 skill-icons 和 contribution-wall-snake。其实这个文档也是经历了一个从繁到简的过程，从最初的各种复杂的 api 调用，到后来只有简单的文字说明和使用 workflow 构建的 skill-icons 和 contribution-wall-snake，这是我现在形成的全新的开发美学——回归极简主义。
 
 我还在这段时间写了一个项目——[bili-audio-parse-api](https://github.com/hazuki-keatsu/bili-audio-parse-api)。这个本来是准备给博客用的，让我静态部署的博客能通过一个微服务来解析哔哩哔哩的视频的音频（因为我的博客有一个网络播放器）。这个项目是我第一次尝试人和人工智能协同工作——完全的人的架构设计和完全的人工智能代码编写，从最初的一个简单的需求文档，到开发文档，最后到代码的生成，让我体会到三件事：
+
 1. 人工智能拥有极强的编码能力，在写代码上完全可以替代人；
 2. 人工智能没办法做设计，如果设计上没有规划好，人工智能的代码将写得非常糟糕；
 3. 文档在软件的开发中极其重要。
@@ -42,6 +43,7 @@ description: ""
 接下来是我最重要的一个阶段，在这个阶段，我真正地实际参与到了开源软件的开发中。如果之前的开源只是自己的小打小闹，这次才是真正将自己写的代码交出去给其他的人看。我之前学习了 Flutter 这个框架，同时我们学校校内有一个服务于学生的开源信息聚合软件 [traintime_pda/xdyou](https://github.com/BenderBlog/traintime_pda) 也是使用的 Flutter 构建的，而我也是这个软件的使用者，我在使用的过程中发现了一些问题，于是我给这个项目提出了 Issue 同时修复了问题，并提出了 Pull Quest。项目的所有者对于软件的维护很上心，回复很快，我也第一次参与到了和大家一起讨论软件的 Issue 的解决方法，这对我的收获很大。形成了我的开源参与模式——先去使用一个软件，然后发现问题，然后和他人交流并寻找解决问题的方式，然后解决问题，然后发现更多的问题（或者是别人的问题），然后去解决别人的问题，慢慢地成为一个项目的核心维护者。
 
 之后，我还写了很多的小玩意：
+
 1. [xuexitong-paste-injector](https://github.com/hazuki-keatsu/xuexitong-paste-injector)：这是一个用来破除学习通网页端禁止粘贴的脚本。在这个脚本的开发过程中，我学习到了开发油猴脚本的方法，也对逆向网页有了更加深刻的理解。
 2. [xuexitong-ppt-downloader](https://github.com/hazuki-keatsu/xuexitong-ppt-downloader)：这是一个下载学习通网页上不可以下载的 PPT 文件的脚本。是上一个项目的拓展，我通过这个脚本还学习到了浏览器插件的开发方式。
 

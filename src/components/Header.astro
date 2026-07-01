@@ -165,7 +165,7 @@ const isActive = (path: string) => {
   function handleSkipToContent() {
     const skipLink = document.getElementById("skip-to-content");
     if (!skipLink) return;
-    skipLink.addEventListener("click", (e) => {
+    skipLink.addEventListener("click", e => {
       e.preventDefault();
       const target = document.getElementById("main-content");
       if (target) {
