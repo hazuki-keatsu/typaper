@@ -19,6 +19,18 @@ function getNeteaseOuterUrl(songId: string | number) {
 }
 
 export const GET: APIRoute = async ({ url: requestUrl }) => {
+  if (import.meta.env.DEV) {
+    console.log("[Music API] Dev mode")
+    return new Response(
+      JSON.stringify({ error: "Dev mode" }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
   try {
     // 初始化 Meting，使用网易云音乐
     const meting = new Meting("netease");
