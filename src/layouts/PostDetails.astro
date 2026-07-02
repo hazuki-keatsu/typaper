@@ -444,10 +444,22 @@ const nextPost =
               t[1].clientX - t[0].clientX,
               t[1].clientY - t[0].clientY
             );
+            const oldScale = currentScale;
             currentScale = Math.min(
               4,
               Math.max(1, initialScale * (dist / initialDist))
             );
+
+            // Zoom to the geometric center of the two fingers
+            const midX = (t[0].clientX + t[1].clientX) / 2;
+            const midY = (t[0].clientY + t[1].clientY) / 2;
+            const ox = overlay!.clientWidth / 2;
+            const oy = overlay!.clientHeight / 2;
+            translateX =
+              (midX - ox) * (1 / currentScale - 1 / oldScale) + translateX;
+            translateY =
+              (midY - oy) * (1 / currentScale - 1 / oldScale) + translateY;
+
             applyTransform();
           } else if (t.length === 1) {
             if (currentScale > 1) {
