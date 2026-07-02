@@ -1,4 +1,4 @@
-import { defineConfig, envField } from "astro/config";
+import { defineConfig, envField, svgoOptimizer } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -15,9 +15,9 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
-import { SITE } from "./src/config";
+import rehypeCallouts from "rehype-callouts";
+import { SITE } from "@/config";
 
-// https://astro.build/config
 export default defineConfig({
   site: SITE.website,
   adapter: vercel(),
@@ -39,7 +39,7 @@ export default defineConfig({
         remarkMermaid,
         [remarkCollapse, { test: "Table of contents" }],
       ],
-      rehypePlugins: [rehypeKatex],
+      rehypePlugins: [rehypeKatex, rehypeCallouts],
     }),
     shikiConfig: {
       themes: { light: "min-light", dark: "night-owl" },
@@ -71,5 +71,8 @@ export default defineConfig({
         optional: true,
       }),
     },
+  },
+  experimental: {
+    svgOptimizer: svgoOptimizer(),
   },
 });
