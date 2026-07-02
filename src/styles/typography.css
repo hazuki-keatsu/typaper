@@ -43,6 +43,10 @@
       @apply mx-auto border border-border;
     }
 
+    img[role="button"] {
+      @apply cursor-zoom-in;
+    }
+
     figcaption {
       @apply opacity-75;
     }

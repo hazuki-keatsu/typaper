@@ -16,7 +16,7 @@ import {
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import rehypeCallouts from "rehype-callouts";
-import { SITE } from "@/config";
+import { SITE } from "./src/config";
 
 export default defineConfig({
   site: SITE.website,

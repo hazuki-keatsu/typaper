@@ -6,4 +6,7 @@ interface Window {
     getTheme: () => string;
     setTheme: (val: string) => void;
   };
+  __theme?: { value: string };
+  __closeLightbox?: (() => void) | null;
+  __lightboxSwapBound?: boolean;
 }
