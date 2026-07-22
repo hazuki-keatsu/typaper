@@ -8,7 +8,6 @@ import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import remarkMermaid from "./src/utils/remarkMermaid";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -36,7 +35,6 @@ export default defineConfig({
       remarkPlugins: [
         remarkMath,
         remarkToc,
-        remarkMermaid,
         [remarkCollapse, { test: "Table of contents" }],
       ],
       rehypePlugins: [rehypeKatex, rehypeCallouts],

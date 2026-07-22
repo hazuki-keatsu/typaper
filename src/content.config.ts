@@ -1,5 +1,5 @@
 import { defineCollection } from "astro:content";
-import { z } from "astro:schema";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 
@@ -31,7 +31,7 @@ const blogroll = defineCollection({
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      url: z.string().url(),
+      url: z.url(),
       description: z.string(),
       avatar: image().optional(),
     }),

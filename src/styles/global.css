@@ -76,7 +76,7 @@ html[data-theme="dark"] {
   scroll-margin-block: 1rem;
 }
 
-/* Mermaid diagram theme switching */
+/* Mermaid diagram -- client-side rendered */
 .mermaid-diagram {
   display: flex;
   justify-content: center;
@@ -84,22 +84,14 @@ html[data-theme="dark"] {
   margin: 1.5rem 0;
   overflow-x: auto;
 }
-.mermaid-diagram figure {
-  margin: 0;
-}
 .mermaid-diagram svg {
   max-width: 100%;
   height: auto;
 }
-.mermaid-light {
-  display: block;
-}
-.mermaid-dark {
-  display: none;
-}
-[data-theme="dark"] .mermaid-light {
-  display: none;
-}
-[data-theme="dark"] .mermaid-dark {
-  display: block;
+
+/* Disable global color transition on mermaid SVGs */
+.mermaid-diagram,
+.mermaid-diagram *,
+.mermaid-diagram svg * {
+  transition: none !important;
 }

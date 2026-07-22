@@ -683,3 +683,85 @@ const nextPost =
     );
   }
 </script>
+
+<script>
+  import mermaid from "mermaid";
+
+  const BASE_CFG = {
+    startOnLoad: false,
+    securityLevel: "loose",
+    fontFamily:
+      '"Noto Serif CJK SC","Source Han Serif SC","SimSun","STSong",Georgia,"Times New Roman",serif',
+  } as const;
+
+  function theme() {
+    return document.documentElement.getAttribute("data-theme") === "dark"
+      ? "dark"
+      : "default";
+  }
+
+  async function renderMermaid() {
+    const blocks = document.querySelectorAll<HTMLElement>(
+      "pre code.language-mermaid",
+    );
+    if (blocks.length === 0) return;
+
+    mermaid.initialize({ ...BASE_CFG, theme: theme() });
+
+    for (const block of blocks) {
+      const pre = block.closest("pre");
+      if (!pre || pre.dataset.mermaidDone) continue;
+
+      const code = block.textContent?.trim() ?? "";
+      if (!code) continue;
+
+      try {
+        const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
+        const { svg } = await mermaid.render(id, code);
+        const wrapper = document.createElement("div");
+        wrapper.className = "mermaid-diagram";
+        wrapper.dataset.mermaidCode = code;
+        wrapper.innerHTML = svg;
+        pre.replaceWith(wrapper);
+      } catch (err) {
+        console.warn("[mermaid] render failed:", err);
+        pre.dataset.mermaidDone = "error";
+      }
+    }
+  }
+
+  /** Revert rendered SVGs back to code blocks so re-render can pick them up */
+  function revertMermaid() {
+    document
+      .querySelectorAll<HTMLElement>(".mermaid-diagram")
+      .forEach(el => {
+        const code = el.dataset.mermaidCode;
+        if (!code) return;
+        const pre = document.createElement("pre");
+        const codeEl = document.createElement("code");
+        codeEl.className = "language-mermaid";
+        codeEl.textContent = code;
+        pre.appendChild(codeEl);
+        el.replaceWith(pre);
+      });
+  }
+
+  let themeTimer: ReturnType<typeof setTimeout>;
+  const themeObserver = new MutationObserver(() => {
+    clearTimeout(themeTimer);
+    themeTimer = setTimeout(() => {
+      revertMermaid();
+      renderMermaid();
+    }, 300);
+  });
+
+  // --- boot ---
+  renderMermaid();
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  document.addEventListener("astro:after-swap", () => {
+    renderMermaid();
+  });
+</script>
