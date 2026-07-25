@@ -6,7 +6,7 @@ protocol: CC BY
 featured: false
 draft: false
 tags:
-  - Lean 4
+  - Note
 description: 简要介绍一下 Lean 4。
 ---
 

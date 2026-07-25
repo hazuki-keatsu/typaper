@@ -6,7 +6,7 @@ featured: false
 draft: false
 protocol: CC BY
 tags:
-  - Coq/Rocq
+  - Note
 description: Brief introduction to the world of Coq/Rocq Prover.
 ---
 

@@ -3,8 +3,10 @@ title: 大二学年总结
 author: Hazuki Keatsu
 pubDatetime: 2026-07-01T03:36:00+08:00
 protocol: CC BY-NC-ND
-featured: true
+featured: false
 draft: false
+tags:
+  - Annual Summary
 description: ""
 ---
 

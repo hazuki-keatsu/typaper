@@ -6,7 +6,7 @@ featured: false
 draft: false
 protocol: CC BY
 tags:
-  - Coq/Rocq
+  - Note
 description: The prerequisite knowledge before learning Coq/Rocq.
 ---
 
