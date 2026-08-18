@@ -3,7 +3,7 @@ title: Nashell C Compiler Development Note - One
 author: Hazuki Keatsu
 pubDatetime: 2026-07-22T15:43:50+08:00
 protocol: CC BY-NC-ND
-featured: true
+featured: false
 draft: false
 tags:
   - Compiler
